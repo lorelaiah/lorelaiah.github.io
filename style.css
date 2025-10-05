@@ -17,6 +17,7 @@ canvas,
 svg {
   display: block;
   max-width: 100%;
+  border-radius: 10px;
 }
 
 body {
@@ -26,6 +27,7 @@ body {
   max-width: 1000px;
   padding: 2em;
   margin: auto;
+  background-color: #dfe7e2;
 }
 
 h1 {
@@ -47,6 +49,11 @@ h2 {
   object-fit: cover;
 }
 
+.calculations {
+  display: flex;
+  gap: 5em;
+}
+
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -60,7 +67,7 @@ h2 {
 }
 
 .assignment a:hover {
-  color: #f06;
+  color: #496850;
 }
 
 .assignment img {
@@ -70,4 +77,27 @@ h2 {
 
 .assignment p {
   margin-top: 0.5em;
+}
+
+pre {
+  background-color: #d4d4d4;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.bold {
+  font-weight: 600;
+}
+
+.questions li img{
+  max-width: 600px;
+}
+
+#schematics {
+  width: 100%;
+  height: auto;
+}
+
+pre {
+  max-width: 600px;
 }

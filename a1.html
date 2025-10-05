@@ -4,15 +4,114 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, maximum-scale=1.0" />
 
-    <title>Example Student's HCDE 439 Physical Computing Page!</title>
+    <title>Lorelai's HCDE 439 Physical Computing Page!</title>
 
     <link href="style.css" rel="stylesheet" type="text/css" />
   </head>
   <body>
-    <h1>Example Student's Assignment 1!</h1>
+    <a href="index.html">back</a>
+    <h1>a1: blink</h1>
     <div class="header">
-      <img src="red-panda.jpg" />
-      <p>Here is all the documentation for assignment 1!</p>
+      <img src="images/a1_1.jpg"/>
+      <img src="images/a1_2.jpg"/>
+      
     </div>
+    <div class="header">
+      <div>
+        <h2>schematics</h2>
+        <img src="images/a1_4.png" id="schematics"/>
+      </div>
+      <div>
+        <h2>resistance calculations</h2>
+        <div>
+          <p>max voltage: 5 V</p> 
+          <p>max current: 0.02 A</p>
+          <p>V = I &times; R</p>
+          <div class="calculations">
+            <div>
+              <h4>green LED:</h4>
+              <p>voltage drop: 1.8 V</p>
+              <p>5 V - 1.8 V = 3.2 V</p>
+              <p>3.2 V = 0.02 A &times; R</p>
+              <p>3.2 V / 0.02 A = R</p>
+              <p class="bold">160 Ω = R</p>
+            </div>
+            <div>
+              <h4>blue/white LED:</h4>
+              <p>voltage drop: 3.3 V</p>
+              <p>5 V - 3.3 V = 1.7 V</p>
+              <p>1.7 V = 0.02 A &times; R</p>
+              <p>1.7 V / 0.02 A = R</p>
+              <p class="bold">85 Ω = R</p>
+            </div>
+          </div>
+          <p>I used a 220 Ω resistor for the green LED and 100 Ω resistors for the blue and white LEDs because those were the closest resistor values I had to the calculations.</p>
+            </div>
+        </div>
+
+      </div>
+
+    <h2>circuit operation</h2>
+    <video src="images/a1_6.mp4" controls></video>
+    <h2>code snippet</h2>
+    <pre><code>// set integer named time equal to 1000 (1 second using delay function)
+int time = 1000;
+
+// set integer named blue equal to 4 (blue led is connected to pin 4)
+int blue = 4;
+// set integer named white equal to 8 (white led is connected to pin 8)
+int white = 8;
+// set integer named green equal to 12 (green led is connected to pin 12)
+int green = 12;
+
+// run once at the start
+void setup() {
+  // set the pin connected to the blue led (pin 4) to an output
+  pinMode(blue, OUTPUT);
+  // set the pin connected to the white led (pin 8) to an output
+  pinMode(white, OUTPUT);
+  // set the pin connected to the green led (pin 12) to an output
+  pinMode(green, OUTPUT);
+}
+
+// repeat infinitely
+void loop() {
+  // set white led to on (5 V)
+  digitalWrite(white, HIGH);
+  // set green led to off (0 V)
+  digitalWrite(green, LOW);
+
+  // wait 1 second (time = 1000)
+  delay(time);
+
+  // set green led to on (5 V)
+  digitalWrite(green, HIGH);
+  // set blue led to off (0 V)
+  digitalWrite(blue, LOW);
+
+  // wait 1 second (time = 1000)
+  delay(time);
+
+  // set blue led to on (5 V)
+  digitalWrite(blue, HIGH);
+  // set white led to off (0 V)
+  digitalWrite(white, LOW);
+
+  // wait 1 second (time = 1000)
+  delay(time);
+}</code></pre>
+
+    <h2>questions</h2>
+    <ol class="questions">
+      <li>
+        <img src="images/a1_5.png"/>
+      </li>
+      <li><p>10 LEDs, 200 mA</p></li>
+      <li></li>
+      <li><p>0.01 s</p></li>
+      <li><p>I did not use AI</p></li>
+    </ol>
+
+
   </body>
 </html>

@@ -83,6 +83,7 @@ pre {
   background-color: #d4d4d4;
   border-radius: 10px;
   padding: 10px;
+  max-width: 600px;
 }
 
 .bold {
@@ -96,8 +97,4 @@ pre {
 #schematics {
   width: 100%;
   height: auto;
-}
-
-pre {
-  max-width: 600px;
 }

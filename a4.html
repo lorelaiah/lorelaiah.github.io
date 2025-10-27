@@ -58,7 +58,7 @@ void loop() {
         <li><img src="images/a4_6.png"></li>
         <li>
             <p>I would address this by taking the average of the past few readings of the sensor to smooth out the data and remove outliers. In my code, I would add:</p>
-            <p>  sensorValue = the past ten readings / 10;</p>
+            <pre><code>sensorValue = the past ten readings / 10;</code></pre>
             <p>If the erroneous readings were significantly higher than the expected, then instead of just averaging, I could check each reading with the last one and determine if it is close enough to the last to make sense. So, my code would look like this:</p>
             <pre><code>if (sensorValue > 2.5 * prevSensorValue) {
   sensorValue = prevSensorValue;

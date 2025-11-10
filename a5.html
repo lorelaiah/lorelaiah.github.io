@@ -68,9 +68,42 @@ void loop() {
     <br>
     <h2>questions</h2>
     <ol>
-        <li>32 A</li>
-        <li></li>
-        <li></li>
+        <li>37.2 A</li>
+        <li>
+            <p>schematic:</p>
+            <img src="images/a5_5.png">
+            <p>datasheets:</p>
+            <ul>
+                <li>flyback diode: https://www.vishay.com/docs/88503/1n4001.pdf</li>
+                <li>dc motor: https://cdn.sparkfun.com/datasheets/Robotics/RP6%20motor%20TFK280SC-21138-45.pdf</li>
+                <li>capacitor: https://www.digikey.com/htmldatasheets/production/749896/0/0/1/vy2103m63y5ug63v7.html?gclsrc=aw.ds&gad_source=5&gad_campaignid=120565755&gclid=EAIaIQobChMI78S4_f_nkAMVkiCtBh0K0SnsEAAYAyAAEgLJBvD_BwE</li>
+            </ul>
+        </li>
+        <li>
+            <p>pseudocode:</p>
+            <pre><code>both forward:
+  pin 6: low
+  pin 5: high
+  pin 4: low
+  pin 3: high
+both back:
+  pin 6: high
+  pin 5: low
+  pin 4: high 
+  pin 3: low
+left forward/right back:
+  pin 6: low
+  pin 5: high
+  pin 4: high
+  pin 3: low
+left back/right forward:
+  pin 6: high
+  pin 5: low
+  pin 4: low
+  pin 3: high</code></pre>
+            <p>schematic:</p>
+            <img src="images/a5_7.png">
+        </li>
         <li>I did not use AI</li>
     </ol>
 

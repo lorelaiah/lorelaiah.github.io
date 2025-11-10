@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, maximum-scale=1.0" />
+    <title>hcde 439: a1</title>
+    <link href="style.css" rel="stylesheet" type="text/css" />
+</head>
+
+
+<body>
+    <a href="index.html">back</a>
+    <video src="images/a5_6.mp4" controls></video>
+    <h1>a5: higher voltage and transistors</h1>
+    <img src="images/a5_1.jpg"/>
+    <img src="images/a5_2.jpg"/>
+    <img src="images/a5_3.jpg"/>
+    <br>
+    <h2>schematics</h2>
+    <img src="images/a5_4.png" id="schematics"/>
+    <br>
+    <h2>code</h2>
+    <pre><code>// use the remote library
+#include <IRremote.h>
+
+// power code (from remote)
+const long power = 3125149440;
+
+// pin connected to ir receiver
+const int receivePin = 6;
+// pin connected to leds
+const int ledPin = 10;
+// track whether the leds are on or off
+int powerOn = false;
+// brightness of the leds
+int maxBrightness = 255;
+
+// run once at the beginning
+void setup() {
+  // set up the ir receiver with the receiver pin
+  IrReceiver.begin(receivePin, ENABLE_LED_FEEDBACK);
+  // set the pin connected to leds to output
+  pinMode(ledPin, OUTPUT);
+}
+
+// repeat forever
+void loop() {
+  // check if the ir receiver received anything
+  if (IrReceiver.decode()) {
+    // figure out if the power button was pressed
+    if (IrReceiver.decodedIRData.decodedRawData == power) {
+      // check if the power is currently on
+      if (powerOn) {
+        // turn the led brightness to 0
+        analogWrite(ledPin, 0);
+        // change state of power
+        powerOn = false;
+      // otherwise, power is off
+      } else {
+        // turn the led brightness to the max
+        analogWrite(ledPin, maxBrightness);
+        // change state of power
+        powerOn = true;
+      }
+    } 
+  }
+}</code></pre>
+    <br>
+    <h2>questions</h2>
+    <ol>
+        <li>32 A</li>
+        <li></li>
+        <li></li>
+        <li>I did not use AI</li>
+    </ol>
+
+</body>
+</html>

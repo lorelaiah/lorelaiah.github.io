@@ -10,48 +10,685 @@
 
 <body>
     <a href="index.html">back</a>
-    <video src="images/final_demo.mp4" controls></video>
+    <img src="images/final_1.jpg"/>
     <h1>final project: dining room lights</h1>
     <a href="final_proposal.html">view proposal</a>
-    <img src="images/final_1.jpg"/>
-    
 
     <br>
     <h2>concept</h2>
     <p>I wanted to use the LED strip and the remote control to add lights to my dining room that can be easily controlled.</p>
     <p>The remote controls the following features:</p>
     <ul>
-        <li>power on/off</li>
-        <li><bold>fading:</bold> different fading modes (# settings (not including steady))</li>
+        <li>
+            <bold>power on/off:</bold>
+            <ul>
+                <li>turn power on/off, or pause/resume previous setting</li>
+            </ul>
+        </li>
+        <li>
+            <bold>fading:</bold>
+            <ul>
+                <li>different fading modes (10 settings)</li>
+                <li>adjust fade speed</li>
+            </ul>
+        </li>
         <li><bold>adjustable brightness:</bold> manually adjust max brightness</li>
         <li><bold>brightness sensor:</bold> adjusts max brightness automatically based on the current lighting (toggle on/off)</li>
-        <li><bold>motion sensor:</bold> turns off lights after a certain amount of time without motion sensed (toggle on/off)</li>
-        <li><bold>sound sensor:</bold> turns off lights after a certain amount of time without sound sensed (toggle on/off)</li>
-        <li><bold>single leds:</bold> indicates which sensors are on</li>
+        <li>
+            <bold>motion/sound sensors:</bold>
+            <ul>
+                <li>turns off lights after a certain amount of time without motion or sound sensed</li>
+                <li>toggle between sensing motion, sound, both, or neither</li>
+                <li>adjust time to turn lights off after</li>
+            </ul>
+        </li>
+        <li><bold>single leds:</bold> indicates which sensor settings are on</li>
     </ul>
     <br>
-    <p>My arduino, breadboard, and sensors are all placed in a box which can be mounted in the corner by the ceiling. The sensors and single LEDs are facing out of the box towards the middle of the room. The 12V power cord is plugged into an outlet in the corner below the box. The LED strip runs across the ceiling of my dining room from the box.</p>
+    <p>My arduino, protoshield, breadboard, LEDs, and sensors are all placed in a box which can be mounted in the corner by the ceiling (or on the windowsill). The sensors and single LEDs are sticking out of holes in the box. The 12V power cord and the arduino power cord are plugged into an outlet in the corner below the box. The LED strip runs across the ceiling of my dining room from the box.</p>
     
+    <br>
+    <h3>images</h3>
+    <div class="grid">
+    <img src="images/final_1.jpg"/>
+    <img src="images/final_2.jpg"/>
+    <img src="images/final_3.jpg"/>
+    <img src="images/final_4.jpg"/>
+    </div>
+
+    <h3>demo video</h3>
+    <p>link: <a href="https://youtu.be/JQMOE8k5bp4" target="_blank">https://youtu.be/JQMOE8k5bp4</a></p>
+    <video src="images/final_demo.mp4" controls></video>
+
+    <br>
+    <h3>remote buttons</h3>
+    <ul>
+        <li><bold>power:</bold> power on/off (reset settings)</li>
+        <li><bold>play/pause:</bold> pause/resume last settings</li>
+        <li><bold>vol+/vol-:</bold> increase/decrease time lights stay on for when motion and/or sound sensor setting is on</li>
+        <li><bold>rewind/fast forward:</bold> increase/decrease fade speed</li>
+        <li><bold>up/down:</bold> increase/decrease max brightness</li>
+        <li><bold>func/stop:</bold> turn on/off light sensor setting</li>
+        <li><bold>eq:</bold> turn on/off sound sensor setting</li>
+        <li><bold>st/rept:</bold> turn on/off motion sensor setting</li>
+        <li><bold>0:</bold> steady</li>
+        <li><bold>1-9:</bold> fade modes</li>
+    </ul>
+
+
+    <br>
+    <h2>circuit</h2>
+    <img src="images/final_circuit_1.png">
+    <p>notes:</p>
+    <ul>
+        <li>there was no sound sensor on the website, so I used another breadboard to represent it</li>
+        <li>instead of a battery, the led strip is connected to the 12 V power cord</li>
+    </ul>
+    <br>
+    <h3>images</h3>
+    <h4>while testing (large breadboard):</h4>
+    <img src="images/final_circuit_2.jpg">
+    <br>
+    <h4>final circuits (small breadboard with protoshield):</h4>
+    <img src="images/final_circuit_3.jpg">
+
     <br>
     <h2>schematics</h2>
     <h3>leds</h3>
-    <img src="">
-    <img src="">
-
+    <div>
+        <div>
+            <img src="images/final_schematic_leds.png">
+            <p>max voltage: 5 V</p> 
+            <p>max current: 0.02 A</p>
+            <p>V = I &times; R</p>
+            <div class="calculations">
+                <div>
+                    <h4>red/green LEDs:</h4>
+                    <p>voltage drop: 1.8 V</p>
+                    <p>5 V - 1.8 V = 3.2 V</p>
+                    <p>3.2 V = 0.02 A &times; R</p>
+                    <p>3.2 V / 0.02 A = R</p>
+                    <p><bold>160 Ω = R</bold></p>
+                </div>
+                <div>
+                    <h4>blue LED:</h4>
+                    <p>voltage drop: 3.3 V</p>
+                    <p>5 V - 3.3 V = 1.7 V</p>
+                    <p>1.7 V = 0.02 A &times; R</p>
+                    <p>1.7 V / 0.02 A = R</p>
+                    <p><bold>85 Ω = R</bold></p>
+                </div>
+            </div>
+            <p>I used 220 Ω resistors for the red and green LEDs and a 100 Ω resistor for the blue LED.</p>
+        </div>
+        <br>
+        <div>
+            <img src="images/final_schematic_led.png">
+        </div>
+    </div>
+    <br>
     <h3>sensors</h3>
-    <img src="">
-    <img src="">
-    <img src="">
+    
+    <div>
+        <h4>photoresistor:</h4>
+        <img src="images/final_schematic_light.png">
+        <div>
+            <p>1,000 Ω < R1 < 100,000 Ω</p>
+            <p>5 V &times; (<bold>10,000 Ω</bold> / (1,000 Ω + <bold>10,000 Ω</bold>)) = 4.5 V</p>
+            <p>5 V &times; (<bold>10,000 Ω</bold> / (100,000 Ω + <bold>10,000 Ω</bold>)) = 0.45 V</p>
+        </div>
+        <p>I used a 10 K Ω resistor for the photoresistor.</p>
+    </div>
+    <br>
+    <div>
+        <h4>motion sensor:</h4>
+        <img src="images/final_schematic_motion.png">
+        <p></p>
+    </div>
+    <br>
+    <div>
+        <h4>sound sensor:</h4>
+        <img src="images/final_schematic_sound.png">
+        <p></p>
+    </div>
+    <br>
+    <div>
+        <h4>ir receiver:</h4>
+        <img src="images/final_schematic_ir.png">
+        <p></p>
+    </div>
+
     
     <br>
     <h2>code</h2>
+    <button type="button" class="collapsible">global variables</button>
+    <div class="content">
+        <br>
+        <ul>
+            <li>includes ir remote library</li>
+            <li>assigns led & sensor pin numbers</li>
+            <li>assigns ir values</li>
+            <li>defines variables used to track states</li>
+        </ul>
+        <br>
+        <pre><code>// include the ir remote library
+#include &lt;IRremote.h&gt;
+
+// <bold>PINS</bold> (assign pin numbers)
+const int ledPin = 10;
+const int bluePin = 9;
+const int redPin = 8;
+const int greenPin = 7;
+
+const int motionPin = 5;
+const int irPin = 3;
+const int soundPin = A0;
+const int lightPin = A1;
+
+// <bold>IR RECEIVER</bold> (assign ir values)
+const long power = 3125149440;
+const long volUp = 3108437760;
+const long funcStop = 3091726080;
+const long re = 3141861120;
+const long playPause = 3208707840;
+const long skip = 3158572800;
+const long down = 4161273600;
+const long volDown = 3927310080;
+const long up = 4127850240;
+const long zero = 3910598400;
+const long eq = 3860463360;
+const long stRept = 4061003520;
+const long one = 4077715200;
+const long two = 3877175040;
+const long three = 2707357440;
+const long four = 4144561920;
+const long five = 3810328320;
+const long six = 2774204160;
+const long seven = 3175284480;
+const long eight = 2907897600;
+const long nine = 3041591040;
+
+// <bold>STATES</bold>
+// array to store brightness based on fade mode
+int brightness[100];
+// array to track most recent brightness detected by photoresistor
+int lightVals[200];
+// the maximum brightness for the led strip
+int maxBrightness;
+// amount of time the lights will stay on for after motion/sound is sensed (minutes) (5-30)
+int sensePause;
+// speed of fade mode (0-6)
+int speed;
+
+// last value detected by motion sensor (0 or 1)
+int motionVal;
+// last value detected by sound sensor
+int soundVal;
+// last value detected by photoresistor
+int lightVal;
+
+// last time motion was sensed
+unsigned long senseTimer;
+// to track the current place in the speed of the fade modes
+int a;
+// to track the current place in the brightness array
+int b;
+// to track the current place in the lightsVal array
+int c;
+
+// whether or not the power is on
+bool powerOn;
+// whether or not the led strip is on
+bool run;
+// whether or not the motion sensor setting is on
+bool motionOn;
+// whether or not the sound sensor setting is on
+bool soundOn;
+// whether or not the light sensor setting is on
+bool lightOn;</code></pre>
+        <br>
+    </div>
+    <br>
+    <br>
+    <button type="button" class="collapsible">setup/loop</button>
+    <div class="content">
+        <br>
+        <ul>
+            <li>sets led pins and sensor pin modes</li>
+            <li>loops infinitely
+                <ul>
+                    <li>checks for buttons pressed</li>
+                    <li>checks sensor settings</li>
+                    <li>updates brightness</li>
+                </ul>
+        </ul>
+        <br>
+        <pre><code>// <bold>SETUP</bold> (run once at beginning)
+void setup() {
+  // set led pin modes to output
+  pinMode(ledPin, OUTPUT);
+  pinMode(redPin, OUTPUT);
+  pinMode(bluePin, OUTPUT);
+  pinMode(greenPin, OUTPUT);
+
+  // set sensor pin modes to input
+  pinMode(motionPin, INPUT);
+  pinMode(soundPin, INPUT);
+  pinMode(lightPin, INPUT);
+  IrReceiver.begin(irPin, ENABLE_LED_FEEDBACK);
+}
+
+
+// <bold>LOOP</bold> (loop infinitely)
+void loop() {
+  // check if any buttons on the remote were pressed
+  if (IrReceiver.decode()) {
+    // run decode()
+    decode();
+  }
+  // check if motion sensor setting is on
+  if (motionOn) {
+    // run soundSense()
+    motionSense();
+  }
+  // check if sound sensor setting is on
+  if (soundOn) {
+    // run soundSense()
+    soundSense();
+  }
+  // check if light sensor setting is on
+  if (lightOn) {
+    // run lightSense()
+    lightSense();
+  }
+  // run setBrightness()
+  setBrightness();
+  // wait 10 ms
+  delay(10);
+}</code></pre>
+        <br>
+    </div>
+    <br>
+    <br>
+    <button type="button" class="collapsible">decode/reset</button>
+    <div class="content">
+        <br>
+        <p>determines which button was pressed; updates variables and/or runs functions based on button pressed</p>
+        <br>
+        <pre><code>// <bold>CHECK IR RECEIVER</bold>
+void decode() {
+  // get value for button pressed
+  long button = IrReceiver.decodedIRData.decodedRawData;
+  // check if power is already on
+  if (powerOn) {
+    // check which button was pressed
+    if (button == power) {
+      // set powerOn to false
+      powerOn = false;
+      // set run to false
+      run = false;
+      // set led brightness to off
+      digitalWrite(redPin, LOW);
+      digitalWrite(bluePin, LOW);
+      digitalWrite(greenPin, LOW);
+      // iterate through brightness, set all values to 0
+      for (int i = 0; i < 100; i++) {
+        brightness[i] = 0;
+      }
+    } else if (button == volUp) {
+      // increase sensePause by 5 (max 30)
+      sensePause = min(30, sensePause + 5);
+    } else if (button == funcStop) {
+      // check if the light sensor setting is on
+      if (lightOn) {
+        // turn off light sensor setting
+        lightOn = false;
+        // turn green led off
+        digitalWrite(greenPin, LOW);
+      } else {
+        // turn light sensor setting on
+        lightOn = true;
+      }
+    } else if (button == re) {
+      // increase speed by 1 (max 6)
+      speed = min(6, speed + 1);
+    } else if (button == playPause) {
+      // check if run is true
+      if (run) {
+        // set run to false
+        run = false;
+      } else {
+        // set run to true
+        run = true;
+      }      
+    } else if (button == skip) {
+      // decrease speed by 1 (min 0)
+      speed = max(0, speed - 1 );
+    } else if (button == down) {
+      // decrease maxBrightness by 16 (min 0)
+      maxBrightness = max(0, maxBrightness - 16);
+    } else if (button == volDown) {
+      // decrease sensePause by 5 (min 5)
+      sensePause = max(5, sensePause - 5);
+    } else if (button == up) {
+      // increase maxBrightness by 16 (max 255)
+      maxBrightness = min(255, maxBrightness + 16);
+    } else if (button == zero) {
+      // set fade mode to 0
+      fade(0);
+    } else if (button == eq) {
+      // check if sound sensor setting is on
+      if (soundOn) {
+        // turn off sound sensor setting
+        soundOn = false;
+        // turn blue led off
+        digitalWrite(bluePin, LOW);
+      } else {
+        // turn on sound sensor setting
+        soundOn = true; 
+      }
+    } else if (button == stRept) {
+      // check if motion sensor setting is on
+      if (motionOn) {
+        // turn motion sensor setting off
+        motionOn = false;
+        // turn red led off
+        digitalWrite(redPin, LOW);
+      } else {
+        // turn motion sensor setting off
+        motionOn = true;
+      }
+    } else if (button == one) {
+      // set fade mode to 1
+      fade(1);
+    } else if (button == two) {
+      // set fade mode to 2
+      fade(2);
+    } else if (button == three) {
+      // set fade mode to 3
+      fade(3);
+    } else if (button == four) {
+      // set fade mode to 4
+      fade(4);
+    } else if (button == five) {
+      // set fade mode to 5
+      fade(5);
+    } else if (button == six) {
+      // set fade mode to 6
+      fade(6);
+    } else if (button == seven) {
+      // set fade mode to 7
+      fade(7);
+    } else if (button == eight) {
+      // set fade mode to 8
+      fade(8);
+    } else if (button == nine) {
+      // set fade mode to 9
+      fade(9);
+    }
+  } else {
+    // if power button was pressed
+    if (button == power) {
+      // run reset()
+      reset();
+    }
+  }
+  // continue checking for buttons pressed
+  IrReceiver.resume();
+}
+
+
+// <bold>RESET</bold> (reset all global variables to default & turn power on)
+void reset() {
+  maxBrightness = 50;
+  sensePause = 5;
+  speed = 2;
+
+  senseTimer = 0;
+  a = 0;
+  b = 0;
+  c = 0;
+
+  powerOn = true;
+  run = true;
+  motionOn = false;
+  soundOn = false;
+  lightOn = false;
+
+  fade(0);
+}</code></pre>
+        <br>
+    </div>
+    <br>
+    <br>
+    <button type="button" class="collapsible">sensors</button>
+    <div class="content">
+        <br>
+        <ul>
+            <li>checks current brightness; updates brightness based on last 200 values (2 seconds)</li>
+            <li>checks if motion and/or sound is sensed; resets timer if there is</li>
+            <li>turns off LEDs after long enough time without sound or motion sensed</li>
+        </ul>
+        <br>
+        <pre><code>// <bold>LIGHT SENSOR</bold>
+void lightSense() {
+  // turn green led on
+  digitalWrite(greenPin, HIGH);
+  // get value from light sensor
+  int thisVal = analogRead(lightPin);
+  // set total to 0
+  long total = 0;
+  // add current value to lightVals array
+  lightVals[c] = thisVal;
+  // iterate through thisVal and total all ints
+  for (int i = 0; i < 200; i++) {
+    total += lightVals[i];
+  }
+  // set lightVal to average of all ints in lightVals
+  lightVal = total/200;
+  // increase c by 1 (to keep track of current place in lightVals array)
+  if (c >= 200) {
+    c = 0;
+  } else {
+    c++;
+  }
+}
+
+// <bold>SOUND SENSOR</bold>
+void soundSense() {
+  // turn blue led on
+  digitalWrite(bluePin, HIGH);
+  // get value from sound sensor
+  soundVal = analogRead(soundPin);
+  // get current time
+  unsigned long mil = millis();
+  // check if sound is detected
+  if (soundVal >= 200) {
+    // reset senseTimer (to current time)
+    senseTimer = mil;
+    // set run to true
+    run = true;
+  }
+  // check if it has been long enough since last sound detected
+  if (mil - senseTimer >= sensePause * 60000) {
+    // set run to false
+    run = false;
+  } else if (mil - senseTimer >= (sensePause + 10) * 60000) {
+    // set power on to false
+    powerOn = false;
+  }
+}
+
+// <bold>MOTION SENSOR</bold>
+void motionSense() {
+  // turn red led on
+  digitalWrite(redPin, HIGH);
+  // get value from motion sensor
+  motionVal = digitalRead(motionPin);
+  // get current time
+  unsigned long mil = millis();
+  // check if motion is detected
+  if (motionVal == 1) {
+    // reset senseTimer (to current time)
+    senseTimer = mil;
+    // set run to true
+    run = true;
+  }
+  // check if it has been long enough since last sound detected
+  if (mil - senseTimer >= sensePause * 60000) {
+    // set run to false
+    run = false;
+  } else if (mil - senseTimer >= (sensePause + 10) * 60000) {
+    // set power on to false
+    powerOn = false;
+  }
+}</code></pre>
+        <br>
+    </div>
+    <br>
+    <br>
+    <button type="button" class="collapsible">fade modes</button>
+    <div class="content">
+        <br>
+        <p>updates brightness array based on mode number provided</p>
+        <br>
+        <pre><code>// <bold>FADE MODE</bold> (fill brightness array with ints (0-100) based on the mode number)
+void fade(int mode) {
+  if (mode == 0) {
+    for (int i = 0; i < 100; i++) {
+      brightness[i] = 100;
+    }
+  } else if (mode == 1) {
+    for (int i = 0; i < 100; i++) {
+      brightness[i] = i;
+    }
+  } else if (mode == 2) {
+    for (int i = 0; i < 100; i++) {
+      brightness[i] = 99 - i;
+    }
+  } else if (mode == 3) {
+    for (int i = 0; i < 100; i++) {
+      brightness[i] = (int)(50.0 * (1.0 - cos(i * 2.0 * PI / 99.0)));
+    }
+  } else if (mode == 4) {
+    for (int i = 0; i < 100; i++) {
+      if (i < 50) {
+        brightness[i] = i * 2;
+      } else {
+        brightness[i] = 100 - ((i - 50) * 2);
+      }
+    }
+  } else if (mode == 5) {
+    for (int i = 0; i < 100; i++) {
+      if (i % 2 == 0) {
+        brightness[i] = 100;
+      } else {
+        brightness[i] = 0;
+      }
+    }
+  } else if (mode == 6) {
+    for (int i = 0; i < 100; i++) {
+      brightness[i] = (4 - (i / 25)) * 25;
+    }
+  } else if (mode == 7) {
+    const int flash_step = 50;
+    for (int i = 0; i < 100; i++) {
+      if (i == flash_step) {
+        brightness[i] = 100;
+      } else {
+        brightness[i] = 0;
+      }
+    }
+  } else if (mode == 8) {
+    for (int i = 0; i < 100; i++) {
+      brightness[i] = random(70, 101);
+    }
+  } else if (mode == 9) {
+    for (int i = 0; i < 100; i++) {
+      float normalized = i / 99.0;
+      brightness[i] = (int)(pow(normalized, 3.0) * 100.0);
+    }
+  }
+}</code></pre>
+        <br>
+    </div>
+    <br>
+    <br>
+    <button type="button" class="collapsible">set brightness</button>
+    <div class="content">
+        <br>
+        <p>sets current brightness based on fade mode (brightness array), maxBrightness, lightOn, run, and speed</p>
+        <br>
+        <pre><code>// <bold>SET BRIGHTNESS</bold>
+void setBrightness() {
+  // map brightness based on current place in brightness array and maxBrightness
+  int thisBrightness = map(brightness[b], 0, 99, 0, maxBrightness);
+  // check if light sensor setting is on
+  if (lightOn) {
+    // remap brightness to decrease if more light is sensed and vice versa
+    thisBrightness = map(lightVal, 500, 0, 0, thisBrightness);
+  }
+  // ensure brightness is within possible brightness
+  thisBrightness = constrain(thisBrightness, 0, 255);
+  // check if run is false
+  if (!run) {
+    // set brightness to 0
+    thisBrightness = 0;
+  }
+  // increase a and b based on speed and length of brightness array
+  if (a >= speed) {
+    if (b >= 100) {
+      b = 0;
+    } else {
+      b++;
+    }
+    a = 0;
+  } else {
+    a++;
+  }
+  // set brightness to the led strip
+  analogWrite(ledPin, thisBrightness);
+}</code></pre>
+        <br>
+    </div>
+    <br>
+
 
     <br>
-    <h2>technical writeup</h2>
-    <h3></h3>
+    <h2>process</h2>
+    <p>My original goal was to make lights that would be placed on the ceiling in my dining room that could be controlled by a remote.</p>
+    <img src="images/final_process_1.png">
+    <br>
+    <p>To start out, I wired all the sensors and made sure I could make them all work how I needed them to. I used a single LED to test the output of the sensors.</p>
+    <img src="images/final_process_2.jpg">
+    <br>
+    <p>Then, I replaced the single LED with the LED strip and the other LEDs that I would use to show which settings are on. I also added the IR receiver to control the LED strip.</p>
+    <img src="images/final_process_3.jpg">
+    <br>
+    <p>After I wrote all the code and stuff I attempted moving everything to the tiny breadboard. I did not have much confidence in it all to fit but it ended up fitting somehow and becoming even more disgusting looking.</p>
+    <img src="images/final_process_4.jpg">
+    <br>
+    <p>After realizing that it all would actually fit on the tiny breadboard, I took it apart and redid all the wiring, this time with the protoshield, so that it fit on top of the arduino instead of next to it so that the box could be smaller.</p>
+    <img src="images/final_process_5.jpg">
+    <br>
+    <p>Then, I measured the dimensions and came up with a design for the cardboard box. I forced my boyfriend to cut the cardboard for me. I also got some shorter wires so that the wires connecting to the sensors and LEDs didn't have to stick up so much so that it would all fit better in the box. I cut holes in the sides of the box for the power cords, sensors, and LEDs.</p>
+    <div class="grid">
+        <img src="images/final_process_6.jpg">
+        <img src="images/final_process_7.jpg">
+    </div>
+    <br>
+    <p>After realizing I don't have a long enough cord to power the arduino I decided not to put the box on the ceiling. It fits on the windowsill and I can plug it into a portable charger to power it instead of getting a long cord. If I decide to get a longer cord later I'll put it on the ceiling.</p>
+    <div class="grid">    
+        <img src="images/final_1.jpg">
+        <img src="images/final_4.jpg">
+    </div>
 
 
 
-
+    <br>
+    <br>
+    <p style="font-size: 12px;"><bold>AI Usage:</bold></p>
+    <p style="font-size: 12px;">I used AI to come up with the 9 fade modes (to fill the brightness array).</p>
+<script src="index.js"></script>
 </body>
 </html>

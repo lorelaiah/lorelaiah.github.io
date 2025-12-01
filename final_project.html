@@ -50,12 +50,11 @@
     <br>
     <h3>images</h3>
     <div class="grid">
-        <img src="images/final_1.jpg"/>
-        <img src="images/final_2.jpg"/>
-        <img src="images/final_3.jpg"/>
-        <img src="images/final_4.jpg"/>
+    <img src="images/final_1.jpg"/>
+    <img src="images/final_2.jpg"/>
+    <img src="images/final_3.jpg"/>
+    <img src="images/final_4.jpg"/>
     </div>
-    <br>
 
     <h3>demo video</h3>
     <p>link: <a href="https://youtu.be/JQMOE8k5bp4" target="_blank">https://youtu.be/JQMOE8k5bp4</a></p>
@@ -162,14 +161,17 @@
     
     <br>
     <h2>code</h2>
-    <h3>global variables</h3>
-    <ul>
-        <li>includes ir remote library</li>
-        <li>assigns led & sensor pin numbers</li>
-        <li>assigns ir values</li>
-        <li>defines variables used to track states</li>
-    </ul>
-    <pre><code>// include the ir remote library
+    <button type="button" class="collapsible">global variables</button>
+    <div class="content">
+        <br>
+        <ul>
+            <li>includes ir remote library</li>
+            <li>assigns led & sensor pin numbers</li>
+            <li>assigns ir values</li>
+            <li>defines variables used to track states</li>
+        </ul>
+        <br>
+        <pre><code>// include the ir remote library
 #include &lt;IRremote.h&gt;
 
 // <bold>PINS</bold> (assign pin numbers)
@@ -244,19 +246,24 @@ bool motionOn;
 bool soundOn;
 // whether or not the light sensor setting is on
 bool lightOn;</code></pre>
-    
+        <br>
+    </div>
     <br>
-    <h3>setup/loop</h3>
-    <ul>
-        <li>sets led pins and sensor pin modes</li>
-        <li>loops infinitely
-            <ul>
-                <li>checks for buttons pressed</li>
-                <li>checks sensor settings</li>
-                <li>updates brightness</li>
-            </ul>
-    </ul>
-    <pre><code>// <bold>SETUP</bold> (run once at beginning)
+    <br>
+    <button type="button" class="collapsible">setup/loop</button>
+    <div class="content">
+        <br>
+        <ul>
+            <li>sets led pins and sensor pin modes</li>
+            <li>loops infinitely
+                <ul>
+                    <li>checks for buttons pressed</li>
+                    <li>checks sensor settings</li>
+                    <li>updates brightness</li>
+                </ul>
+        </ul>
+        <br>
+        <pre><code>// <bold>SETUP</bold> (run once at beginning)
 void setup() {
   // set led pin modes to output
   pinMode(ledPin, OUTPUT);
@@ -299,11 +306,16 @@ void loop() {
   // wait 10 ms
   delay(10);
 }</code></pre>
-    
+        <br>
+    </div>
     <br>
-    <h3>decode/reset</h3>
-    <p>determines which button was pressed; updates variables and/or runs functions based on button pressed</p>
-    <pre><code>// <bold>CHECK IR RECEIVER</bold>
+    <br>
+    <button type="button" class="collapsible">decode/reset</button>
+    <div class="content">
+        <br>
+        <p>determines which button was pressed; updates variables and/or runs functions based on button pressed</p>
+        <br>
+        <pre><code>// <bold>CHECK IR RECEIVER</bold>
 void decode() {
   // get value for button pressed
   long button = IrReceiver.decodedIRData.decodedRawData;
@@ -445,15 +457,20 @@ void reset() {
 
   fade(0);
 }</code></pre>
-
+        <br>
+    </div>
     <br>
-    <h3>sensors</h3>
-    <ul>
-        <li>checks current brightness; updates brightness based on last 200 values (2 seconds)</li>
-        <li>checks if motion and/or sound is sensed; resets timer if there is</li>
-        <li>turns off LEDs after long enough time without sound or motion sensed</li>
-    </ul>
-    <pre><code>// <bold>LIGHT SENSOR</bold>
+    <br>
+    <button type="button" class="collapsible">sensors</button>
+    <div class="content">
+        <br>
+        <ul>
+            <li>checks current brightness; updates brightness based on last 200 values (2 seconds)</li>
+            <li>checks if motion and/or sound is sensed; resets timer if there is</li>
+            <li>turns off LEDs after long enough time without sound or motion sensed</li>
+        </ul>
+        <br>
+        <pre><code>// <bold>LIGHT SENSOR</bold>
 void lightSense() {
   // turn green led on
   digitalWrite(greenPin, HIGH);
@@ -526,11 +543,16 @@ void motionSense() {
     powerOn = false;
   }
 }</code></pre>
-
+        <br>
+    </div>
     <br>
-    <h3>fade modes</h3>
-    <p>updates brightness array based on mode number provided</p>
-    <pre><code>// <bold>FADE MODE</bold> (fill brightness array with ints (0-100) based on the mode number)
+    <br>
+    <button type="button" class="collapsible">fade modes</button>
+    <div class="content">
+        <br>
+        <p>updates brightness array based on mode number provided</p>
+        <br>
+        <pre><code>// <bold>FADE MODE</bold> (fill brightness array with ints (0-100) based on the mode number)
 void fade(int mode) {
   if (mode == 0) {
     for (int i = 0; i < 100; i++) {
@@ -588,11 +610,16 @@ void fade(int mode) {
     }
   }
 }</code></pre>
-
+        <br>
+    </div>
     <br>
-    <h3>set brightness</h3>
-    <p>sets current brightness based on fade mode (brightness array), maxBrightness, lightOn, run, and speed</p>
-    <pre><code>// <bold>SET BRIGHTNESS</bold>
+    <br>
+    <button type="button" class="collapsible">set brightness</button>
+    <div class="content">
+        <br>
+        <p>sets current brightness based on fade mode (brightness array), maxBrightness, lightOn, run, and speed</p>
+        <br>
+        <pre><code>// <bold>SET BRIGHTNESS</bold>
 void setBrightness() {
   // map brightness based on current place in brightness array and maxBrightness
   int thisBrightness = map(brightness[b], 0, 99, 0, maxBrightness);
@@ -622,8 +649,12 @@ void setBrightness() {
   // set brightness to the led strip
   analogWrite(ledPin, thisBrightness);
 }</code></pre>
+        <br>
+    </div>
     <br>
 
+
+    <br>
     <h2>process</h2>
     <p>My original goal was to make lights that would be placed on the ceiling in my dining room that could be controlled by a remote.</p>
     <img src="images/final_process_1.png">

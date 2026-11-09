@@ -12,7 +12,6 @@
 
 img,
 picture,
-video,
 canvas,
 svg {
   display: block;
@@ -21,7 +20,10 @@ svg {
   border-radius: 10px;
 }
 video {
-    max-width: 800px;
+  width: clamp(400px, 100%, 800px);
+  display: block;
+  max-height: 400px;
+  border-radius: 10px;
 }
 
 body {

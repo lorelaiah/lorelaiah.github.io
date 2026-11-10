@@ -51,6 +51,7 @@ h3 {
 
 #me {
     width: 200px;
+    border-radius: 50%;
 }
 .calculations {
   display: flex;

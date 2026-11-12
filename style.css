@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Hanuman:wght@100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 
 *,
 *::before,
@@ -8,6 +8,17 @@
 
 * {
   margin: 0;
+}
+
+:root {
+  --dark: #121212;
+  --light: #E3E3E3;
+  --dark-accent: #4A4A4A;
+  --dark-accent-2: #2D2D2D;
+  --light-accent: #D1C8C0;
+  --light-accent-2: #EEEBE8;
+  --primary-font: "Inter", sans-serif;
+  --secondary-font: "Hanuman", serif;
 }
 
 img,
@@ -41,27 +52,73 @@ span {
     display: inline;
 }
 
+button {
+    padding: 8px 16px;
+    border-radius: 20px;
+    background-color:var(--dark);
+    color: var(--light);
+    border: 0;
+    font-family: var(--primary-font);
+    font-size: 18px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: var(--dark-accent-2);
+    text-decoration: underline;
+}
+
+input {
+    padding: 8px 16px;
+    border-radius: 20px;
+    background-color: var(--light-accent);
+    color: var(--dark);
+    border: 0;
+    font-family: var(--primary-font);
+    font-size: 18px;
+}
+
+input:hover {
+    background-color: var(--light-accent-2);
+}
+
 body {
-  font-family: "Inter", sans-serif;
+  font-family: var(--primary-font);
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
   max-width: 1000px;
   padding: 2em;
   margin: auto;
-  background-color: #dfe7e2;
+  background-color: var(--light);
+  color: var(--dark);
 }
 
 h1 {
   font-weight: 800;
+  font-family: var(--secondary-font);
 }
 
 h2 {
   font-weight: 700;
+  font-family: var(--secondary-font);
 }
 
 h3 {
     font-weight: 500;
-    font-style: italic;
+    font-family: var(--secondary-font);
+}
+
+p {
+    font-size: 18px;
+    font-family: var(--primary-font);
+}
+a {
+    color: var(--dark);
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
 }
 
 #me {

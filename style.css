@@ -112,6 +112,7 @@ p {
     font-size: 18px;
     font-family: var(--primary-font);
 }
+
 a {
     color: var(--dark);
     text-decoration: none;
